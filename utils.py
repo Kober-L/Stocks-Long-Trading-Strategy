@@ -4,7 +4,7 @@ Useful functions for checking a tresults, and performs some calculations
 
 import pandas as pd
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 from datetime import datetime
 import plotly.graph_objects as go
 import yfinance as yf
@@ -31,6 +31,10 @@ def OHLC_to_HA(df):
         df_ha.loc[df_ha.index[i],'Close'] = (df['Open'][i] + df['Close'][i] + df['Low'][i] +  df['High'][i])/4
     df_ha = df_ha.iloc[1:,:]
     return df_ha
+
+
+def plot_series(series):
+    plt.plot(series.index, series.values)
 
 
 #need to check at his failure

@@ -27,7 +27,7 @@ def detect_trend(prices, points = 8, candles = 104, growth = 5.1, long = True):
         i += 1
     
     #now that you extracted to consider prices, check th proper growth
-    #tasso di crescita rispetto al punto precedente o in generale??
+    #tasso di crescita rispetto al punto precedente
     for i in range(len(points) - 1):
         start_price = points[i]
         next_price = points[i + 1]
