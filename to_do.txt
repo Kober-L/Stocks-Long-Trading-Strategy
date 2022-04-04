@@ -1,0 +1,2 @@
+-test all the indicators
+-see if slope works properly

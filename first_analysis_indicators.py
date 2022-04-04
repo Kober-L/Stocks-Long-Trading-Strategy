@@ -40,16 +40,22 @@ def detect_trend(prices, points = 8, candles = 104, growth = 5.1, long = True):
     return True
 
 
+#indicators (STILL HAVE TO TEST THEM!)
+def calculate_ema(prices, days, smoothing=2):
+    ema = [sum(prices[:days]) / days]
+    for price in prices[days:]:
+        ema.append((price * (smoothing / (1 + days))) + ema[-1] * (1 - (smoothing / (1 + days))))
+    return ema
 
 
+def calculate_ma(prices, days):
+  return prices.rolling(days, min_periods=1).mean()
 
 
+def compute_slope(x1, y1, x2, y2):
+  return (y2 - y1) / (x2 - x1)
 
-        
 
-#dopo metti MA(questi devono ritornare solo la colonna adj close!), EMA, slope indicators
+def up_trend(y1, y2, target_up_trend):
+  return (y2 - y1) >= target_up_trend
 
-    #extract the prices
-    #select the points
-    #then extract them
-    #check at if there is a growth of 5.7 between each point (5.7 w.r.t what??)

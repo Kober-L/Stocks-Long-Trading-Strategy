@@ -35,6 +35,34 @@ def OHLC_to_HA(df):
 
 def plot_series(series):
     plt.plot(series.index, series.values)
+    plt.show()
+
+
+#generate series of numbers in order to evaluate the trend function
+def generate_series(ascending=True, change=5.4, drop=2.2):
+    asc = {}
+    first = 100
+    i = 1
+    asc[i] = first
+
+    for i in range(104):
+        i += 1
+        if ascending:
+            if i % 8 == 0:
+                second = first - ((first / 100) * drop)
+            else:
+                second = first + ((first / 100) * change)
+        else:
+            if i % 8 == 0:
+                second = first + ((first / 100) * drop)
+            else:
+                second = first - ((first / 100) * change)
+        asc[i] = second
+        first = second
+
+    ser = pd.Series(data=asc, index=list(asc.keys()))
+
+    return ser
 
 
 #need to check at his failure
