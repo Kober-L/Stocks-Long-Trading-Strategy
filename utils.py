@@ -38,6 +38,10 @@ def plot_series(series):
     plt.show()
 
 
+def column_as_np(column):
+    return np.array(column)
+
+
 #generate series of numbers in order to evaluate the trend function
 def generate_series(ascending=True, change=5.4, drop=2.2):
     asc = {}

@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import tulipy as ti
 
 
 def detect_trend(prices, points = 8, candles = 104, growth = 5.1, long = True):
@@ -41,21 +42,23 @@ def detect_trend(prices, points = 8, candles = 104, growth = 5.1, long = True):
 
 
 #indicators (STILL HAVE TO TEST THEM!)
-def calculate_ema(prices, days, smoothing=2):
-    ema = [sum(prices[:days]) / days]
-    for price in prices[days:]:
-        ema.append((price * (smoothing / (1 + days))) + ema[-1] * (1 - (smoothing / (1 + days))))
-    return ema
+def calculate_ema(prices, days):
+    column = prices['Adj Close']
+    column = np.array(column)
+    return ti.ema(column, days)
 
 
 def calculate_ma(prices, days):
-  return prices.rolling(days, min_periods=1).mean()
+    column = prices['Adj Close']
+    column = np.array(column)   
+    return ti.sma(column, days)
+    #return prices.rolling(days, min_periods=1).mean()
 
 
 def compute_slope(x1, y1, x2, y2):
   return (y2 - y1) / (x2 - x1)
 
 
-def up_trend(y1, y2, target_up_trend):
-  return (y2 - y1) >= target_up_trend
+#def up_trend(y1, y2, target_up_trend):
+#  return (y2 - y1) >= target_up_trend
 

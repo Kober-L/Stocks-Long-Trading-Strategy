@@ -1,2 +1,4 @@
--test all the indicators
+-test all the indicators (MA AND EMA!)
 -see if slope works properly
+-functions that plots all the things (candles, MA, EMA, together)
+-valuta funzione slope di tulipy
